@@ -1,11 +1,12 @@
 import BLOG from '@/blog.config'
-import { ArrowRightCircle, GlobeAlt } from '@/components/HeroIcons'
+// ArrowRightCircle
+import { GlobeAlt } from '@/components/HeroIcons'
 import LazyImage from '@/components/LazyImage'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import CONFIG from '../config'
-import Announcement from './Announcement'
+// import Announcement from './Announcement'
 import Card from './Card'
 
 /**
@@ -14,7 +15,8 @@ import Card from './Card'
  * @returns
  */
 export function InfoCard(props) {
-  const { siteInfo, notice } = props
+  // notice
+  const { siteInfo } = props
   const router = useRouter()
   // 在文章详情页特殊处理
   const isSlugPage = router.pathname === '/[...slug]'
@@ -30,16 +32,12 @@ export function InfoCard(props) {
                 </div>
             </div>
 
-            <h2 className='text-3xl font-extrabold mt-3'>
-                {BLOG.AUTHOR}
-            </h2>
-
             {/* 公告栏 */}
             <div>
-                <Announcement post={notice} style={{ color: 'white !important' }} />
+                {/* <Announcement post={notice} style={{ color: 'white !important' }} /> */}
             </div>
 
-            <div className='flex justify-between'>
+            <div className='flex justify-between items-center py-4'>
                 <div className='flex space-x-3  hover:text-black dark:hover:text-white'>
                     {/* 两个社交按钮 */}
                     <div className='bg-indigo-400 p-2 rounded-full  transition-colors duration-200 dark:bg-yellow-500 dark:hover:bg-black hover:bg-white'>
@@ -50,7 +48,12 @@ export function InfoCard(props) {
                         </Link>
                     </div>
                 </div>
-                <MoreButton />
+                <div className='fles items-center justify-center'>
+                    <h2 className='text-3xl font-extrabold'>
+                         {BLOG.AUTHOR}
+                    </h2>
+                </div>
+                {/* <MoreButton /> */}
             </div>
         </Card>
   )
@@ -77,11 +80,11 @@ function GreetingsWords() {
  * 了解更多按鈕
  * @returns
  */
-function MoreButton() {
-  return <Link href='/about'>
-        <div className={'group bg-indigo-400 dark:bg-yellow-500 hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white flex items-center transition-colors duration-200 py-2 px-3 rounded-full space-x-1'}>
-            <ArrowRightCircle className={'group-hover:stroke-black dark:group-hover:stroke-white w-6 h-6 transition-all duration-100'} />
-            <div className='font-bold'>了解更多</div>
-        </div>
-    </Link>
-}
+// function MoreButton() {
+//   return <Link href='/about'>
+//         <div className={'group bg-indigo-400 dark:bg-yellow-500 hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white flex items-center transition-colors duration-200 py-2 px-3 rounded-full space-x-1'}>
+//             <ArrowRightCircle className={'group-hover:stroke-black dark:group-hover:stroke-white w-6 h-6 transition-all duration-100'} />
+//             <div className='font-bold'>了解更多</div>
+//         </div>
+//     </Link>
+// }
