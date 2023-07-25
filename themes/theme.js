@@ -64,10 +64,11 @@ export const initDarkMode = (isDarkMode, updateDarkMode) => {
   const queryMode = getQueryVariable('mode')
   if (queryMode) {
     isDarkMode = queryMode === 'dark'
-  } else if (!isDarkMode) {
+  } else if (BLOG.APPEARANCE === 'auto') {
     isDarkMode = isPreferDark()
   }
   updateDarkMode(isDarkMode)
+  console.log('更新', isDarkMode)
   saveDarkModeToCookies(isDarkMode)
   document.getElementsByTagName('html')[0].setAttribute('class', isDarkMode ? 'dark' : 'light')
 }
@@ -102,6 +103,7 @@ export const loadDarkModeFromCookies = () => {
    * @param newTheme
    */
 export const saveDarkModeToCookies = (newTheme) => {
+  console.log('newTheme', newTheme)
   cookie.save('darkMode', newTheme, { path: '/' })
 }
 
